@@ -1,0 +1,31 @@
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+.header {
+  position: fixed;  /* Fixes the header at the top */
+  top: 0;          /* Aligns it to the top */
+  left: 0;         /* Aligns it to the left */
+  right: 0;        /* Aligns it to the right */
+  z-index: 1000;   /* Ensures it stays on top of other content */
+  background-color: rgba(0, 0, 0, 0.7); /* Optional: add background for visibility */
+}
