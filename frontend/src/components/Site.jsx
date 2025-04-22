@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-
-function PricingToggle() {
+import { useNavigate } from "react-router-dom";
+function Site() {
+  const navigate =useNavigate();
   const [plan, setPlan] = useState("monthly");
 
   const getPrice = (basePrice) => {
@@ -94,6 +95,7 @@ function PricingToggle() {
                 <li>Kiga</li>
               </ol>
               <button
+                onClick={() => navigate('/plan')}
                 className="w-60 px-4 py-2 bg-blue-500 text-white rounded-3xl mt-9
                            hover:shadow-lg hover:shadow-amber-300 transition duration-300"
               >
@@ -107,6 +109,6 @@ function PricingToggle() {
   );
 }
 
-export default PricingToggle;
+export default Site;
 
 

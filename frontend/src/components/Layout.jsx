@@ -59,7 +59,7 @@ const Layout = ({ children }) => {
           </ul>
         </nav>
         <div>
-          <Link to="/signin" className="text-base sm:text-sm md:text-xs lg:text-sm bg-blue-500 text-white px-4 py-2 rounded">
+          <Link to="/welcome" className="text-base sm:text-sm md:text-xs lg:text-sm bg-blue-500 text-white px-4 py-2 rounded">
             Sign In
           </Link>
         </div>

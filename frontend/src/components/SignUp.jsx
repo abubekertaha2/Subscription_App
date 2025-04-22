@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -15,36 +19,53 @@ function SignUp() {
     confirmPassword: false
   });
 
+  useEffect(() => {
+    axios.post('http://localhost:3000/')
+      .then(() => {})
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: false }));
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validation logic for required fields
+    // Validation
     const newErrors = {
-      username: formData.username === '',
-      email: formData.email === '',
+      username: formData.username.trim() === '',
+      email: formData.email.trim() === '',
       password: formData.password === '',
       confirmPassword: formData.confirmPassword === ''
     };
 
-    // Check if password and confirm password match
     if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = 'Passwords do not match';
     }
 
     setErrors(newErrors);
 
-    // Check if there are any empty fields or mismatched passwords
-    if (Object.values(newErrors).includes(true) || newErrors.confirmPassword) {
+    const hasErrors =
+      Object.values(newErrors).includes(true) || typeof newErrors.confirmPassword === 'string';
+
+    if (hasErrors) {
       return;
     }
 
-    // Handle form submission logic here
-    console.log(formData);
+    try {
+      const response = await axios.post('http://localhost:3000/api/signup', formData);
+      console.log('Signup successful:', response.data);
+      navigate('/body');
+    } catch (error) {
+      console.error('Signup error:', error.response?.data || error.message);
+    }
   };
 
   return (
@@ -62,7 +83,9 @@ function SignUp() {
               name="username"
               value={formData.username}
               onChange={handleChange}
-              className={`w-full p-3 mt-2 border ${errors.username ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500`}
+              className={`w-full p-3 mt-2 border ${
+                errors.username ? 'border-red-500' : 'border-gray-300'
+              } rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500`}
               placeholder="First and Last Name"
               required
             />
@@ -78,7 +101,9 @@ function SignUp() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className={`w-full p-3 mt-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500`}
+              className={`w-full p-3 mt-2 border ${
+                errors.email ? 'border-red-500' : 'border-gray-300'
+              } rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500`}
               placeholder="Enter your email"
               required
             />
@@ -94,7 +119,9 @@ function SignUp() {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className={`w-full p-3 mt-2 border ${errors.password ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500`}
+              className={`w-full p-3 mt-2 border ${
+                errors.password ? 'border-red-500' : 'border-gray-300'
+              } rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500`}
               placeholder="Enter your password"
               required
             />
@@ -110,11 +137,13 @@ function SignUp() {
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
-              className={`w-full p-3 mt-2 border ${errors.confirmPassword ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500`}
+              className={`w-full p-3 mt-2 border ${
+                errors.confirmPassword ? 'border-red-500' : 'border-gray-300'
+              } rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500`}
               placeholder="Confirm your password"
               required
             />
-            {errors.confirmPassword && (
+            {typeof errors.confirmPassword === 'string' && (
               <p className="text-red-500 text-xs mt-2">{errors.confirmPassword}</p>
             )}
           </div>
@@ -132,3 +161,4 @@ function SignUp() {
 }
 
 export default SignUp;
+

@@ -26,12 +26,11 @@ function SetUp() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "companySize") {
-      // Set the selected company size and close the dropdown
       setFormData(prevState => ({
         ...prevState,
         companySize: value
       }));
-      setIsDropdownOpen(false); // Close dropdown after selection
+      setIsDropdownOpen(false); 
     } else {
       setFormData({ ...formData, [name]: value });
     }
@@ -51,7 +50,7 @@ function SetUp() {
       companyWebsite: formData.companyWebsite === '',
       password: formData.password === '',
       confirmPassword: formData.confirmPassword === '',
-      companySize: formData.companySize === '' // Ensure at least one option is selected
+      companySize: formData.companySize === '' 
     };
 
     if (formData.password !== formData.confirmPassword) {
@@ -68,18 +67,16 @@ function SetUp() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold text-center mb-6">Set Up Your Office</h2>
-        {/* Logo Image */}
+    <div className="min-h-screen flex items-center justify-center mt-2">
+      <div className="text-white w-full max-w-md bg-white/25 backdrop-blur-md p-4 rounded-lg shadow-lg mt-4">
+        <h2 className="text-2xl font-bold text-center m-3">Set Up Your Office</h2>
         <div className="flex justify-center mb-6">
           <img src={backImage} alt="Logo" className="w-24 h-24 rounded-full object-cover" />
         </div>
 
         <form onSubmit={handleSubmit}>
-          {/* Enter Name */}
           <div className="mb-4">
-            <label htmlFor="username" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="username" className="block text-sm font-medium text-white">
               Enter Your Name <span className="text-red-500">*</span>
             </label>
             <input
@@ -93,10 +90,8 @@ function SetUp() {
               required
             />
           </div>
-
-          {/* Enter Email */}
           <div className="mb-4">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="email" className="block text-sm font-medium text-white">
               Enter Your Email <span className="text-red-500">*</span>
             </label>
             <input
@@ -110,10 +105,8 @@ function SetUp() {
               required
             />
           </div>
-
-          {/* Company Name */}
           <div className="mb-4">
-            <label htmlFor="companyName" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="companyName" className="block text-sm font-medium text-white">
               Company Name <span className="text-red-500">*</span>
             </label>
             <input
@@ -127,10 +120,8 @@ function SetUp() {
               required
             />
           </div>
-
-          {/* Company Website */}
           <div className="mb-4">
-            <label htmlFor="companyWebsite" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="companyWebsite" className="block text-sm font-medium text-white">
               Company Website <span className="text-red-500">*</span>
             </label>
             <input
@@ -144,10 +135,8 @@ function SetUp() {
               required
             />
           </div>
-
-          {/* Company Size with Dropdown */}
           <div className="mb-4 relative">
-            <label htmlFor="companySize" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="companySize" className="block text-sm font-medium text-white">
               Company Size <span className="text-red-500">*</span>
             </label>
             <input
@@ -173,7 +162,6 @@ function SetUp() {
                   />
                   <label className="text-sm">0 to 10 employees</label>
                 </div>
-                {/* Option 2 */}
                 <div className="flex items-center space-x-2">
                   <input
                     type="checkbox"
@@ -185,7 +173,6 @@ function SetUp() {
                   />
                   <label className="text-sm">10 to 50 employees</label>
                 </div>
-                {/* Option 3 */}
                 <div className="flex items-center space-x-2">
                   <input
                     type="checkbox"
@@ -201,9 +188,8 @@ function SetUp() {
             )}
           </div>
 
-          {/* Create Password */}
           <div className="mb-4">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="password" className="block text-sm font-medium text-white">
               Create Password <span className="text-red-500">*</span>
             </label>
             <input
@@ -217,10 +203,8 @@ function SetUp() {
               required
             />
           </div>
-
-          {/* Confirm Password */}
           <div className="mb-4">
-            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="confirmPassword" className="block text-sm font-medium text-white">
               Confirm Password <span className="text-red-500">*</span>
             </label>
             <input
@@ -238,7 +222,6 @@ function SetUp() {
             )}
           </div>
 
-          {/* Continue Button */}
           <button
             type="submit"
             className="w-full p-3 bg-blue-500 text-black rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"

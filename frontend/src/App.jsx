@@ -2,7 +2,9 @@ import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import './App.css';
+import About from './components/About';
 import Body from './components/Body';
+import Contact from './components/Contact.jsx';
 import Feature from './components/Feature.jsx';
 import Home from './components/Home.jsx';
 import Layout from './components/Layout';
@@ -17,6 +19,8 @@ const App = () => {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About/>}/>
+          <Route path="/contact" element={<Contact/>}/>
           <Route path="/setup" element={<SetUp />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/welcome" element={<Welcome />} />
