@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import backImage from '../assets/images/back_1.jpg';
+import { useNavigate } from 'react-router-dom';
 
 function SetUp() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -64,6 +66,7 @@ function SetUp() {
     }
 
     console.log(formData);
+    navigate('/home');
   };
 
   return (
@@ -131,7 +134,7 @@ function SetUp() {
               value={formData.companyWebsite}
               onChange={handleChange}
               className={`w-full p-3 mt-2 border ${errors.companyWebsite ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500`}
-              placeholder="https://yourcompany.com"
+              placeholder="https://company.org"
               required
             />
           </div>
@@ -150,7 +153,6 @@ function SetUp() {
             />
             {isDropdownOpen && (
               <div className="absolute w-full bg-white border border-gray-300 mt-1 p-2 rounded-md shadow-lg">
-                {/* Option 1 */}
                 <div className="flex items-center space-x-2">
                   <input
                     type="checkbox"
@@ -235,4 +237,3 @@ function SetUp() {
 }
 
 export default SetUp;
-

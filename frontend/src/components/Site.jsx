@@ -24,14 +24,14 @@ function Site() {
     {
       title: "Enterprise",
       description: "Includes everything plus premium support and more.",
-      basePrice: null, // Custom Plan
+      basePrice: null,
     },
   ];
 
   return (
     <div className="px-4">
-      {/* Heading */}
-      <h1 className="text-3xl md:text-6xl font-bold text-center mt-16">
+      
+      <h1 className="text-xl md:text-6xl font-bold text-center mt-16">
         <span className="text-white mr-4">Flexible</span>
         <span className="text-yellow-400 ml-4">Plans</span>
       </h1>
@@ -39,7 +39,6 @@ function Site() {
         Choose the plan that works best for you & your team!
       </p>
 
-      {/* Toggle Buttons */}
       <div className="flex justify-center mb-12">
         <div className="bg-[#414266] rounded-full p-1 flex shadow-inner border border-gray-700">
           <button
@@ -65,7 +64,6 @@ function Site() {
         </div>
       </div>
 
-      {/* Pricing Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto pb-20">
         {cards.map((card, idx) => (
           <div

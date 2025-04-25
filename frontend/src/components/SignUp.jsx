@@ -49,7 +49,7 @@ function SignUp() {
     if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = 'Passwords do not match';
     }
-
+    localStorage.setItem("user", JSON.stringify(formData));
     setErrors(newErrors);
 
     const hasErrors =
@@ -69,12 +69,12 @@ function SignUp() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="w-full max-w-md bg-cyan-400/40 p-8 mt-16 rounded-lg shadow-lg">
+    <div className="min-h-screen flex items-center justify-center text-white">
+      <div className="bg-white/15 backdrop-blur-3xl w-full max-w-md p-8 mt-16 rounded-lg shadow-lg text-white">
         <h2 className="text-2xl font-bold text-center mb-6">Complete Your SignUp</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="username" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="username" className="block text-sm font-medium text-white">
               Enter Your Name <span className="text-red-500">*</span>
             </label>
             <input
@@ -92,7 +92,7 @@ function SignUp() {
           </div>
 
           <div className="mb-4">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="email" className="block text-sm font-medium text-white">
               Enter Your Email <span className="text-red-500">*</span>
             </label>
             <input
@@ -110,7 +110,7 @@ function SignUp() {
           </div>
 
           <div className="mb-4">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="password" className="block text-sm font-medium text-white">
               Create Password <span className="text-red-500">*</span>
             </label>
             <input
@@ -128,7 +128,7 @@ function SignUp() {
           </div>
 
           <div className="mb-4">
-            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="confirmPassword" className="block text-sm font-medium text-white">
               Confirm Password <span className="text-red-500">*</span>
             </label>
             <input

@@ -38,7 +38,7 @@ const Layout = ({ children }) => {
             </li>
             <li>
               <NavLink
-                to="/site"
+                to="/about"
                 className={({ isActive }) =>
                   isActive ? 'underline text-blue-500 font-bold' : 'hover:text-blue-500'
                 }
@@ -48,7 +48,7 @@ const Layout = ({ children }) => {
             </li>
             <li>
               <NavLink
-                to="/plan"
+                to="/contact"
                 className={({ isActive }) =>
                   isActive ? 'underline text-blue-500 font-bold' : 'hover:text-blue-500'
                 }

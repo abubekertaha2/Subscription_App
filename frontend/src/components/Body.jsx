@@ -6,7 +6,7 @@ function Body() {
 
   return (
     <div className="min-h-screen flex flex-col justify-between items-center p-2">
-      <h1 className="text-4xl md:text-6xl font-bold text-center mt-24">
+      <h1 className="text-4xl md:text-4xl font-bold text-center mt-24">
         <span className="text-white">Well Come To Your </span>
         <span className="text-yellow-400">Virtual Office</span>
       </h1>
